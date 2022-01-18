@@ -12,7 +12,8 @@
   <h1>設定</h1>
   <form action="settingDone.php" method="post"><!--index.phpから変更-->
     あなたの名前:<input type="text" name="userName"><br>
-    わたしの名前:<input type="text" name="comName"><br>
+    コム1の名前:<input type="text" name="com1Name"><br>
+    コム2の名前:<input type="text" name="com2Name"><br>
     <input type="submit" value="設定終了">
   </form>
 </body>

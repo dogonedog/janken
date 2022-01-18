@@ -5,9 +5,11 @@ require_once('Player.php');//読み込む
 require_once('judge.php');
 require_once('utill.php');
 require_once('ResultStrategy.php');
+require_once('RandomStrategy.php');
 
 $user = unserialize($_SESSION['user']);//セッションからuserとってくる
-$com = unserialize($_SESSION['com']);
+$com1 = unserialize($_SESSION['com1']);
+$com2 = unserialize($_SESSION['com2']);
 
 
 // $userName = $user->getName();
@@ -33,11 +35,15 @@ $hand = ['グー', 'チョキ', 'パー', '?'];
 $user->setHand($userHand);//グーチョキパーがおくられてくるのでいる
 // $com = new Player($comName);
 //$com->setHand(random_int(0, 2));整数のランダムjavaにはない　ここでcomの手がランダムでセットされている→$com->setNextHand();に変える
-$com->setNextHand();
+$com1->setNextHand();
+$com2->setNextHand();
 // $judge = new Judge();
 //$msg = $judge->execute($user, $com);
-$msg = Judge::execute($user, $com);//クラスの呼び出しは::（コロン）
+$msg = Judge::execute($user, $com1, $com2);//クラスの呼び出しは::（コロン）executeメソッドをつくりかえる
 //$msg = "どちらかの勝ち";
+$_SESSION['user'] = serialize($user);
+$_SESSION['com1'] = serialize($com1);
+$_SESSION['com2'] = serialize($com2);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -52,8 +58,11 @@ $msg = Judge::execute($user, $com);//クラスの呼び出しは::（コロン�
   <p><?php echo h($user->getName()); ?>:
   <?php echo $hand[$user->getHand()]; ?></p>
 
-  <p><?php echo h($com->getName()); ?>:
-  <?php echo $hand[$com->getHand()]; ?></p>
+  <p><?php echo h($com1->getName()); ?>:
+  <?php echo $hand[$com1->getHand()]; ?></p>
+
+  <p><?php echo h($com2->getName()); ?>:
+  <?php echo $hand[$com2->getHand()]; ?></p>
 
   <p><?php echo h($msg); ?></p>
   <p><a href="/php-class/">戻る</a></p>

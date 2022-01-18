@@ -3,8 +3,8 @@ require_once('StrategyInterface.php');
 
 class ResultStrategy implements StrategyInterface {
   private $com;//$comを引数としてinterefaceのコンストラクタに実装したいけどできないので下のプロパティにコンストラクタを作り$com入れる
-
-  public function __construct($com){
+  //$comは先ほどだした手と結果を持っている
+  public function __construct($com){//ResultStrategyをnewするときに$comを引数にもつ　$st = new resultstrategy($com)
     $this->com = $com;
   }
 /**
@@ -15,11 +15,11 @@ class ResultStrategy implements StrategyInterface {
  */
   public function nextHand(){
     // $result => "win","lose","draw"
-    $result = $this->com->getResult();
-    $hand = $this->com->getHand();//"0""1""2"
+    $result = $this->com->getResult();//comは結果を持っている
+    $hand = $this->com->getHand();//"0""1""2"comは手を持っている
 
      if ($result === "lose") {
-      $nextHand = $hand;//さっきと同じ手
+      $nextHand = $hand;//$hand=さっきと同じ手
     } else if ($result === "draw"){
       $nextHand = ($hand + 1) % 3;
     } else {

@@ -4,7 +4,7 @@ class Player {
   private $name;
   private $hand;
   private $result;
-  private $strategy;//引数のstrategyをセットする
+  private $strategy;//引数のstrategyをセットするcomはｒresultstaregyをもっている
 
   public function __construct($name) {//コンストラクター
     $this->name = $name;//this.name
