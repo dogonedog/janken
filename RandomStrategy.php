@@ -1,7 +1,7 @@
 <?php
-require_once('StrategyInterface.php');
+require_once('Strategy.php');
 
-class RandomStrategy implements StrategyInterface {
+class RandomStrategy extends Strategy {
   // public function __constructor(){
 
   // }コンストラクターに引数いらない

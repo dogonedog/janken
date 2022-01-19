@@ -14,6 +14,10 @@ public function setStrategy($strategy){
   $this->strategy = $strategy;//引数のstrategyをプロパティのstrategyにセットする
 }
 
+public function getstrategy(){
+  return $this->strategy;
+}
+
 //strategyが提案した手を次の手をセットする
 public function setNextHand(){//this　フィールドのstrategyのnexthand（）を実行して012が返ってくるので$nexthandという名前で受け取る
  $nextHand = $this->strategy->nextHand();//012

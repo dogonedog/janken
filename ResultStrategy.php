@@ -1,10 +1,12 @@
 <?php
-require_once('StrategyInterface.php');
+require_once('Strategy.php');
 
-class ResultStrategy implements StrategyInterface {
+class ResultStrategy extends Strategy {
   private $com;//$comを引数としてinterefaceのコンストラクタに実装したいけどできないので下のプロパティにコンストラクタを作り$com入れる
   //$comは先ほどだした手と結果を持っている
+  
   public function __construct($com){//ResultStrategyをnewするときに$comを引数にもつ　$st = new resultstrategy($com)
+    parent::__construct();//引数があると親のコンストラクタが動かないので無理やり親のコンストラクタを動かす
     $this->com = $com;
   }
 /**

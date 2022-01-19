@@ -54,15 +54,26 @@ $_SESSION['com2'] = serialize($com2);
   <title>じゃんけんゲーム</title>
 </head>
 <body>
-  <h1>じゃんけんゲーム</h1>
+  <h1>じゃんけんゲーム結果</h1>
+
   <p><?php echo h($user->getName()); ?>:
   <?php echo $hand[$user->getHand()]; ?></p>
 
-  <p><?php echo h($com1->getName()); ?>:
-  <?php echo $hand[$com1->getHand()]; ?></p>
+  <p>
+    <span title="<?php echo $com1->getStrategy()->getName(); ?>">
+      <?php echo h($com1->getName()); ?>
+    </span>:
+      <?php echo $hand[$com1->getHand()]; ?>
+  </p>
 
-  <p><?php echo h($com2->getName()); ?>:
-  <?php echo $hand[$com2->getHand()]; ?></p>
+  <p>
+  <span title="<?php echo $com2->getStrategy()->getName(); ?>"><!--pタグの中は1行にな　divは改行される-->
+    <?php echo h($com2->getName()); ?>:
+  </span>
+    <?php echo $hand[$com2->getHand()]; ?>
+    </p>
+
+
 
   <p><?php echo h($msg); ?></p>
   <p><a href="/php-class/">戻る</a></p>
